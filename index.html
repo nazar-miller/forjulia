@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>З Днем Святого Валентина</title>
     <style>
+        
         body {
             font-family: 'Courier New', Courier, monospace;
             background-color: #fae1dd;
             text-align: center;
             padding: 20px;
             position: relative;
-            /* overflow: hidden; */
+            overflow: hidden;
             top:40px; 
+           
         }
         p{
             scroll-behavior: smooth;  
@@ -26,8 +28,7 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             position: relative;
             z-index: 2;
-            min-height: 150vh;
-            max-heifht: 200vh;
+            
         }
         h1 {
             color: #f08080;
@@ -130,12 +131,16 @@
             white-space: nowrap;
             
         }
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
     .photo-line{
         display: none; /* Приховує елемент */
     }
     .photos{
         top:17px
+    }
+    .container{
+        min-height: 150vh;
+        max-height: 200vh;
     }
     .audio-controls{
         position: absolute;
@@ -149,6 +154,10 @@
         font-size: 12px;
         padding: 10px 12px;
     }
+    body{
+        overflow:auto;
+    }
+    
 }
 
         @keyframes float {

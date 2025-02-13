@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>З Днем Святого Валентина</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fae1dd;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            top:40px
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            min-height: 60vh;
+        }
+        h1 {
+            color: #f08080;
+            font-family: 'Brush Script MT', cursive;
+        }
+        .photo-line {
+            width: 90%;
+            height: 6px;
+            background-color: #a0522d;
+            margin: 40px auto 20px auto;
+            position: relative;
+            border-radius: 3px;
+        }
+        .photos {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            position: relative;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .photo {
+            width: 150px;
+            height: 150px;
+            background-color: #ffe4e1;
+            border: 3px solid #f08080;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f08080;
+            font-size: 14px;
+            position: relative;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            transform: rotate(-5deg);
+        }
+        .photo:nth-child(even) {
+            transform: rotate(5deg);
+        }
+        .photo::before {
+            content: '';
+            width: 2px;
+            height: 60px;
+            background-color: #a0522d;
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .heart-clip {
+            font-size: 26px;
+            color: red;
+            position: absolute;
+            top: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .message {
+            font-size: 22px;
+            color: #b22222;
+            font-style: italic;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 75%, 20% 100%, 0% 30%);
+            animation: float 5s infinite ease-in-out;
+        }
+        .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.audio-controls {
+            position: absolute;
+            top: -43px;
+            right: 20px;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .audio-button {
+            padding: 10px 15px;
+            background-color: #f08080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            white-space: nowrap;
+            
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="valentineAudio" src="audio.mp3"></audio>
+    <div class="audio-controls">
+        <button class="audio-button" onclick="playAudio()">▶ Включити</button>
+        <button class="audio-button" onclick="pauseAudio()">⏸ Пауза</button>
+        <button class="audio-button" onclick="rewindAudio(-10)">⏪ -10с</button>
+        <button class="audio-button" onclick="rewindAudio(10)">⏩ +10с</button>
+    </div>
+   
+    <div class="container">
+        <h1>Кохана, з Днем Святого Валентина! ❤️</h1>
+        <p class="message">Ти перша думка в моїй голові зранку й остання перед сном, тож нехай ти будеш моєю першою і останньою жінкою в житті. Ти заслуговуєш на все в цьому світі!
+            💕</p>
+        <div class="photo-line"></div>
+        <div class="photos">
+            <div class="photo">
+                <span class="heart-clip">❤️</span>
+                <img src="photo1.jpg" alt="Фото 1">
+            </div>
+            <div class="photo">
+                <span class="heart-clip">❤️</span>
+                <img src="photo2.jpg" alt="Фото 2">
+            </div>
+            <div class="photo">
+                <span class="heart-clip">❤️</span>
+                <img src="photo3.jpg" alt="Фото 3">
+            </div>
+            <div class="photo">
+                <span class="heart-clip">❤️</span>
+                <img src="photo4.jpg" alt="Фото 4">
+            </div>
+        </div>        
+    </div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+
+        function playAudio() {
+            document.getElementById('valentineAudio').play();
+        }
+        function pauseAudio() {
+            document.getElementById('valentineAudio').pause();
+        }
+        function rewindAudio(seconds) {
+            const audio = document.getElementById('valentineAudio');
+            audio.currentTime += seconds;
+        }
+    </script>
+</body>
+</html>
